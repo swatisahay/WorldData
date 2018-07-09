@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MySql.Data.MySqlClient;
 
 namespace ToDoList
 {
@@ -37,4 +38,9 @@ namespace ToDoList
             });
         }
     }
+    public static class DBConfiguration
+  {
+      public static string ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=world;";
+  }
+
 }

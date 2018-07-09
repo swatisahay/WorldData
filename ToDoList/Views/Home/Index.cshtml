@@ -1,4 +1,52 @@
-<h1>Welcome to the To Do List!</h1>
-<a href='/items/new'>Add a new item<a/>
-<a href='/items'><a/>
-<p>first one yo</P>
+<h1>Cities</h1>
+<table>
+<tr>
+   <th>ID</th>
+   <th>NAME</th>
+   <th>CODE</th>
+   <th>DISTRICT</th>
+   <th>POPULATION</th>
+ </tr>
+ <tr>
+    <td>
+    @foreach(var city in Model)
+    {
+    <ul>
+        <p>"@city.GetId()"</p>
+    </ul>
+    }
+    </td>
+    <td>
+    @foreach(var city in Model)
+        {
+        <ul>
+            <p>"@city.GetName()"</p>
+        </ul>
+        }
+        </td>
+    <td>
+    @foreach(var city in Model)
+        {
+        <ul>
+            <p>"@city.GetCode()"</p>
+        </ul>
+        }
+        </td>
+    <td>    @foreach(var city in Model)
+        {
+        <ul>
+            <p>"@city.GetDistrict()"</p>
+        </ul>
+        }
+        </td>
+    <td>    @foreach(var city in Model)
+        {
+        <ul>
+            <p>"@city.GetPopulation()"</p>
+        </ul>
+        }
+        </td>
+  </tr>
+
+
+</table>
