@@ -11,6 +11,8 @@ namespace ToDoList.Controllers
         [HttpGet("/items")]
         public ActionResult Index()
         {
+        //  City newCity= new City(Request.Form["new-city"]);
+         //SetUserInput(Request.Query["new-city"]);
          return View(City.GetAll());
         }
 
@@ -19,21 +21,11 @@ namespace ToDoList.Controllers
         {
             return View();
         }
-        // [HttpPost("/items")]
-        // public ActionResult Create()
-        // {
-        // //  Item newItem = new Item (Request.Form["new-item"]);
-        //   //newItem.Save();
-        //   List<Item> allItems = Item.GetAll();
-        //   return View("Index", allItems);
-        // }
+        [HttpPost("/items")]
+        public ActionResult Create()
+        {
 
-        // [HttpPost("/items/delete")]
-        // public ActionResult DeleteAll()
-        // {
-        //     Item.ClearAll();
-        //     return View();
-        // }
-
+          return View("Index",City.SearchByCity(Request.Form["newcity"]));
+      }
+        }
     }
-}
