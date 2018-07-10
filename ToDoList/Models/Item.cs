@@ -108,6 +108,57 @@ namespace ToDoList.Models
          }
          return allCities;
      }
+     public static List<City> SearchByDist(string newDist)
+     {
+         List<City> allCities = new List<City> {};
+         MySqlConnection conn = DB.Connection();
+         conn.Open();
+         MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+         cmd.CommandText = cmd.CommandText = @"SELECT * FROM city" + " WHERE name LIKE \'" + newDist + "%\'" + ";";
+         MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+         while(rdr.Read())
+         {
+           int cityId = rdr.GetInt32(0);
+           string cityName = rdr.GetString(1);
+           string cityCode = rdr.GetString(2);
+           string cityDistrict = rdr.GetString(3);
+           int cityPopulation = rdr.GetInt32(4);
+           City newCity = new City(cityId, cityName, cityCode, cityDistrict, cityPopulation);
+           allCities.Add(newCity);
+         }
+         conn.Close();
+         if (conn != null)
+         {
+             conn.Dispose();
+         }
+         return allCities;
+     }
+     public static List<City> GetByPopulation(int min=0, int max=0)
+   {
+
+     List<City> allCities = new List<City> {};
+     MySqlConnection conn = DB.Connection();
+          conn.Open();
+          MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+          cmd.CommandText = @"SELECT * FROM City WHERE Population BETWEEN "+ min +" AND "+ max +";";
+          MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+          while(rdr.Read())
+          {
+            int cityId = rdr.GetInt32(0);
+            string cityName = rdr.GetString(1);
+            string cityCode = rdr.GetString(2);
+            string cityDistrict = rdr.GetString(3);
+            int cityPopulation = rdr.GetInt32(4);
+            City newCity = new City(cityId, cityName, cityCode, cityDistrict, cityPopulation);
+            allCities.Add(newCity);
+          }
+          conn.Close();
+          if (conn != null)
+          {
+              conn.Dispose();
+          }
+          return allCities;
+   }
 
   }
 }

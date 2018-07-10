@@ -1,6 +1,19 @@
-<h1>To Do List</h1>
+<h1>World Data</h1>
 <form action="/items" method="post">
-  <label for="newcity">Item description:</label>
+  <label for="newcity">Search by city</label>
   <input id="newcity" name="newcity" type="text">
   <button type="submit">Submit</button>
 </form>
+<form action="/items/dist" method="post">
+  <label for="newDist">Search by district</label>
+  <input id="newDist" name="newDist" type="text">
+  <button type="submit">Submit</button>
+</form>
+<form action="/items/Pop" method="post">
+       <label for="minpop">Min Population</label>
+       <input id="minpop" name="minpop" type="text">
+       <label for="maxpop">Max Population</label>
+       <input id="maxpop" name="maxpop" type="text">
+
+       <button type="submit">Submit</button>
+     </form>
